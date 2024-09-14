@@ -1,0 +1,202 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="CssUnknownProperty" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myCustomPropertiesEnabled" value="true" />
+      <option name="myIgnoreVendorSpecificProperties" value="false" />
+      <option name="myCustomPropertiesList">
+        <value>
+          <list size="1">
+            <item index="0" class="java.lang.String" itemvalue="weight" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="CssUnknownTarget" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="688" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="5">
+            <item index="0" class="java.lang.String" itemvalue="(click)" />
+            <item index="1" class="java.lang.String" itemvalue="[(ngModel)]" />
+            <item index="2" class="java.lang.String" itemvalue="*ngFor" />
+            <item index="3" class="java.lang.String" itemvalue="start" />
+            <item index="4" class="java.lang.String" itemvalue="align" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="20">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="hidden-label" />
+            <item index="7" class="java.lang.String" itemvalue="result-canvas" />
+            <item index="8" class="java.lang.String" itemvalue="input-field" />
+            <item index="9" class="java.lang.String" itemvalue="spinner" />
+            <item index="10" class="java.lang.String" itemvalue="file-upload" />
+            <item index="11" class="java.lang.String" itemvalue="loading" />
+            <item index="12" class="java.lang.String" itemvalue="algorithm-form" />
+            <item index="13" class="java.lang.String" itemvalue="workflow-saver-form" />
+            <item index="14" class="java.lang.String" itemvalue="option" />
+            <item index="15" class="java.lang.String" itemvalue="num_cities" />
+            <item index="16" class="java.lang.String" itemvalue="algorithm" />
+            <item index="17" class="java.lang.String" itemvalue="workflow-form" />
+            <item index="18" class="java.lang.String" itemvalue="btn" />
+            <item index="19" class="java.lang.String" itemvalue="body" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="JSUnresolvedReference" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyDictCreationInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="54">
+            <item index="0" class="java.lang.String" itemvalue="pandas" />
+            <item index="1" class="java.lang.String" itemvalue="polars" />
+            <item index="2" class="java.lang.String" itemvalue="genetic" />
+            <item index="3" class="java.lang.String" itemvalue="seaborn" />
+            <item index="4" class="java.lang.String" itemvalue="matplotlib" />
+            <item index="5" class="java.lang.String" itemvalue="fairscale" />
+            <item index="6" class="java.lang.String" itemvalue="sentencepiece" />
+            <item index="7" class="java.lang.String" itemvalue="fire" />
+            <item index="8" class="java.lang.String" itemvalue="torch" />
+            <item index="9" class="java.lang.String" itemvalue="scipy" />
+            <item index="10" class="java.lang.String" itemvalue="qiskit" />
+            <item index="11" class="java.lang.String" itemvalue="numpy" />
+            <item index="12" class="java.lang.String" itemvalue="qiskit-ignis" />
+            <item index="13" class="java.lang.String" itemvalue="qiskit.utils" />
+            <item index="14" class="java.lang.String" itemvalue="qiskit-ibmq-provider" />
+            <item index="15" class="java.lang.String" itemvalue="sklearn" />
+            <item index="16" class="java.lang.String" itemvalue="networkx" />
+            <item index="17" class="java.lang.String" itemvalue="importlib_metadata" />
+            <item index="18" class="java.lang.String" itemvalue="importlib_resources" />
+            <item index="19" class="java.lang.String" itemvalue="typing_extensions" />
+            <item index="20" class="java.lang.String" itemvalue="pbr" />
+            <item index="21" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="22" class="java.lang.String" itemvalue="wcwidth" />
+            <item index="23" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="24" class="java.lang.String" itemvalue="yfinance" />
+            <item index="25" class="java.lang.String" itemvalue="zipp" />
+            <item index="26" class="java.lang.String" itemvalue="tenacity" />
+            <item index="27" class="java.lang.String" itemvalue="qutip" />
+            <item index="28" class="java.lang.String" itemvalue="lxml" />
+            <item index="29" class="java.lang.String" itemvalue="prompt-toolkit" />
+            <item index="30" class="java.lang.String" itemvalue="soupsieve" />
+            <item index="31" class="java.lang.String" itemvalue="peewee" />
+            <item index="32" class="java.lang.String" itemvalue="stdlib-list" />
+            <item index="33" class="java.lang.String" itemvalue="urllib3" />
+            <item index="34" class="java.lang.String" itemvalue="Flask-Limiter" />
+            <item index="35" class="java.lang.String" itemvalue="pyparsing" />
+            <item index="36" class="java.lang.String" itemvalue="limits" />
+            <item index="37" class="java.lang.String" itemvalue="Flask" />
+            <item index="38" class="java.lang.String" itemvalue="stevedore" />
+            <item index="39" class="java.lang.String" itemvalue="ordered-set" />
+            <item index="40" class="java.lang.String" itemvalue="tzdata" />
+            <item index="41" class="java.lang.String" itemvalue="kiwisolver" />
+            <item index="42" class="java.lang.String" itemvalue="pipdeptree" />
+            <item index="43" class="java.lang.String" itemvalue="rich" />
+            <item index="44" class="java.lang.String" itemvalue="packaging" />
+            <item index="45" class="java.lang.String" itemvalue="pandas-datareader" />
+            <item index="46" class="java.lang.String" itemvalue="psutil" />
+            <item index="47" class="java.lang.String" itemvalue="fonttools" />
+            <item index="48" class="java.lang.String" itemvalue="flask-talisman" />
+            <item index="49" class="java.lang.String" itemvalue="frozendict" />
+            <item index="50" class="java.lang.String" itemvalue="pydeps" />
+            <item index="51" class="java.lang.String" itemvalue="pytz" />
+            <item index="52" class="java.lang.String" itemvalue="idna" />
+            <item index="53" class="java.lang.String" itemvalue="qiskit-aer" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+          <option value="E722" />
+          <option value="E741" />
+          <option value="E122" />
+          <option value="E128" />
+          <option value="E211" />
+          <option value="E127" />
+          <option value="W605" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+          <option value="N814" />
+          <option value="N813" />
+          <option value="N802" />
+          <option value="N803" />
+          <option value="N806" />
+          <option value="N812" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyRedeclarationInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="list" />
+          <option value="min" />
+          <option value="exit" />
+          <option value="input" />
+          <option value="eval" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingNamesInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyStatementEffectInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="requests.head.distance" />
+          <option value="Save_Data.scoreboard.high_score" />
+          <option value="random.random.choice" />
+          <option value="random.choice.choice" />
+          <option value="int.*" />
+          <option value="chatbotAI" />
+          <option value="pandas" />
+          <option value="list.ycor" />
+          <option value="Constants_Dictionary.*" />
+          <option value="main.t" />
+          <option value="list.time" />
+          <option value="Quantum_Tsp.*" />
+          <option value="list.y" />
+          <option value="turing_machine.TuringMachine.__getitem__" />
+          <option value="pytorch_lightning.callbacks.*" />
+          <option value="list.city_list" />
+          <option value="qiskit.circuit.quantumcircuit.QuantumCircuit.u3" />
+          <option value="pyximport" />
+          <option value="qiskit.circuit.quantumcircuit.QuantumCircuit.*" />
+          <option value="dict.eigenvalue" />
+          <option value="dict.eigenstate" />
+          <option value="cv2.VideoWriter_fourcc" />
+          <option value="qiskit.providers.backend.Backend.*" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnusedLocalInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+  </profile>
+</component>
