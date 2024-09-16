@@ -48,4 +48,5 @@ pip install -r requirements.txt
 
 # docs 
 cd writerside 
-topics starter topic.md 
+
+topics: starter topic.md 
