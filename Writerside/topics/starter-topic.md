@@ -194,3 +194,111 @@ plt.ylabel('Architectural Complexity')
 plt.title('Predicted Probabilities of Emergent Phenomena')
 plt.show()
 ```
+
+## Meta-learning on a sinusoidal task
+The provided code is a PyTorch implementation of a simple neural network designed to perform meta-learning on a sinusoidal task. The code includes data generation, model definition, training, testing, and visualization of the results.
+
+First, the necessary libraries are imported, including PyTorch for building and training the model, `numpy` for generating synthetic data, and `matplotlib` for visualizing the training metrics.
+
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+The `SimpleNN` class defines a simple neural network with three fully connected layers. The `forward` method applies the ReLU activation function to the outputs of the first two layers and returns the output of the third layer.
+
+```python
+class SimpleNN(nn.Module):
+    def __init__(self):
+        super(SimpleNN, self).__init__()
+        self.fc1 = nn.Linear(1, 64)
+        self.fc2 = nn.Linear(64, 64)
+        self.fc3 = nn.Linear(64, 1)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        return self.fc3(x)
+```
+
+The `generate_sine_wave_data` function generates synthetic data for a sinusoidal task. It creates input data `x` uniformly distributed between -5 and 5 and computes the corresponding `y` values as the sine of `x` plus a phase shift.
+
+```python
+def generate_sine_wave_data(phase_shift, num_samples=100):
+    x = np.random.uniform(-5, 5, size=(num_samples, 1))
+    y = np.sin(x + phase_shift)
+    return torch.tensor(x, dtype=torch.float32), torch.tensor(y, dtype=torch.float32)
+```
+
+The `train_model_on_task` function trains the model on a given task. It iterates over the training data for a specified number of epochs, performing forward and backward passes, updating the model parameters, and printing the loss every 100 epochs.
+
+```python
+def train_model_on_task(model, optimizer, criterion, x_train, y_train, num_epochs=1000):
+    for epoch in range(num_epochs):
+        optimizer.zero_grad()
+        y_pred = model(x_train)
+        loss = criterion(y_pred, y_train)
+        loss.backward()
+        optimizer.step()
+        if (epoch + 1) % 100 == 0:
+            print(f"Epoch {epoch + 1}/{num_epochs}, Loss: {loss.item():.4f}")
+```
+
+The `test_generalization` function evaluates the model's generalization to a new task. It computes the mean squared error (MSE) loss between the model's predictions and the true values for the test data.
+
+```python
+def test_generalization(model, x_test, y_test):
+    with torch.no_grad():
+        y_pred = model(x_test)
+        loss = nn.MSELoss()(y_pred, y_test)
+        return loss.item()
+```
+
+The `plot_predictions` function visualizes the model's predictions for both the training and test tasks. It plots the true and predicted values for the training data (Task 1) and the test data (Task 2) using `matplotlib`.
+
+```python
+def plot_predictions(x_train, y_train, x_test, y_test, model):
+    with torch.no_grad():
+        y_train_pred = model(x_train)
+        y_test_pred = model(x_test)
+
+    plt.figure(figsize=(10, 5))
+
+    plt.subplot(1, 2, 1)
+    plt.scatter(x_train, y_train, label='True (Task 1)')
+    plt.scatter(x_train, y_train_pred, label='Predicted (Task 1)', marker='x')
+    plt.title('Task 1: Training Data')
+    plt.legend()
+
+    plt.subplot(1, 2, 2)
+    plt.scatter(x_test, y_test, label='True (Task 2)')
+    plt.scatter(x_test, y_test_pred, label='Predicted (Task 2)', marker='x')
+    plt.title('Task 2: Generalization to Unseen Data')
+    plt.legend()
+
+    plt.show()
+```
+
+In the main code block, the model is trained on a sine wave with no phase shift (Task 1) and tested on a sine wave with a phase shift (Task 2). The training and generalization losses are printed, and the results are visualized.
+
+```python
+if __name__ == "__main__":
+    x_train, y_train = generate_sine_wave_data(phase_shift=0)
+    x_test, y_test = generate_sine_wave_data(phase_shift=np.pi / 2)
+
+    model = SimpleNN()
+    optimizer = optim.Adam(model.parameters(), lr=0.01)
+    criterion = nn.MSELoss()
+
+    print("Training on Task 1...")
+    train_model_on_task(model, optimizer, criterion, x_train, y_train)
+
+    print("\nTesting generalization on Task 2...")
+    generalization_loss = test_generalization(model, x_test, y_test)
+    print(f"Generalization Loss on Task 2: {generalization_loss:.4f}")
+
+    plot_predictions(x_train, y_train, x_test, y_test, model)
+```

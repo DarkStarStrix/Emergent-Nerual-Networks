@@ -46,3 +46,6 @@ git clone
 # install dependencies
 pip install -r requirements.txt
 
+# docs 
+cd writerside 
+topics starter topic.md 
