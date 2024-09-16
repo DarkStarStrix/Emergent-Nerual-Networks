@@ -302,3 +302,62 @@ if __name__ == "__main__":
 
     plot_predictions(x_train, y_train, x_test, y_test, model)
 ```
+
+## Emergent behavior detection in model predictions
+
+The provided code is a Python script that detects and visualizes emergent behavior in a set of model predictions. The script uses `numpy` for data generation and statistical calculations, and `matplotlib` for plotting the results.
+
+First, the script generates synthetic data representing model predictions. These predictions are normally distributed with a mean of 50 and a standard deviation of 5. The `numpy` library is used to create this data:
+
+```python
+np.random.seed(42)
+predictions = np.random.normal(loc=50, scale=5, size=1000)
+```
+
+Next, the script calculates the mean and standard deviation of the generated predictions. These statistics are used to define the thresholds for detecting emergent behavior. Specifically, the thresholds are set at three standard deviations above and below the mean:
+
+```python
+mean = np.mean(predictions)
+std = np.std(predictions)
+threshold_upper = mean + 3 * std
+threshold_lower = mean - 3 * std
+```
+
+The `detect_emergent_behavior` function identifies predictions that fall outside the defined thresholds. Predictions outside the +3σ or -3σ range are considered emergent behavior, while those within the range are considered normal behavior:
+
+```python
+def detect_emergent_behavior(predictions, mean, std, threshold_upper, threshold_lower):
+    emergent_behavior = [pred for pred in predictions if pred > threshold_upper or pred < threshold_lower]
+    normal_behavior = [pred for pred in predictions if threshold_lower <= pred <= threshold_upper]
+    return emergent_behavior, normal_behavior
+```
+
+The script then calls this function to classify the predictions and prints a summary of the results, including the number of emergent and normal behaviors detected:
+
+```python
+emergent_behavior, normal_behavior = detect_emergent_behavior(predictions, mean, std, threshold_upper, threshold_lower)
+print(f"Mean of predictions: {mean:.2f}")
+print(f"Standard deviation of predictions: {std:.2f}")
+print(f"Upper threshold (+3σ): {threshold_upper:.2f}")
+print(f"Lower threshold (-3σ): {threshold_lower:.2f}")
+print(f"Number of emergent behaviors detected: {len(emergent_behavior)}")
+print(f"Number of normal behaviors detected: {len(normal_behavior)}")
+```
+
+Finally, the script visualizes the distribution of predictions and highlights the emergent behaviors using `matplotlib`. It plots a histogram of the predictions, marks the +3σ and -3σ thresholds with vertical lines, and uses scatter points to indicate the emergent behaviors:
+
+```python
+plt.figure(figsize=(10, 6))
+plt.hist(predictions, bins=50, alpha=0.7, label='Predictions', color='b')
+plt.axvline(threshold_upper, color='r', linestyle='--', label='+3σ Threshold')
+plt.axvline(threshold_lower, color='r', linestyle='--', label='-3σ Threshold')
+plt.scatter(emergent_behavior, np.zeros_like(emergent_behavior), color='r', label='Emergent Behaviors')
+plt.title("Emergent Behavior Detection (+3σ Threshold)")
+plt.xlabel("Prediction Values")
+plt.ylabel("Frequency")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+This visualization helps in understanding the distribution of predictions and identifying the points that exhibit emergent behavior.
