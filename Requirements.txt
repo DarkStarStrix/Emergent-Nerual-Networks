@@ -2,3 +2,4 @@ torch~=2.4.1
 numpy~=2.0.2
 matplotlib~=3.9.2
 scikit-learn~=1.5.2
+optuna~=4.0.0

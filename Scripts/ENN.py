@@ -37,56 +37,45 @@ y_test = torch.tensor (y_test)
 
 
 # Define the CNN-RNN hybrid model
-class CNN_RNN_Model (nn.Module):
-    def __init__(self, input_channels, conv_out_channels, rnn_hidden_size, output_size, num_layers=1):
-        super (CNN_RNN_Model, self).__init__ ()
-
-        # CNN layers
-        self.conv1 = nn.Conv2d (in_channels=input_channels, out_channels=conv_out_channels, kernel_size=3, stride=1,
-                                padding=1)
-        self.conv2 = nn.Conv2d (in_channels=conv_out_channels, out_channels=conv_out_channels, kernel_size=3, stride=1,
-                                padding=1)
-        self.pool = nn.MaxPool2d (kernel_size=2, stride=2, padding=0)
-
-        # Calculate the size of the feature map after the convolutional and pooling layers
+class CNN_RNN_Model(nn.Module):
+    def __init__(self, input_channels=3, conv_out_channels=32, rnn_hidden_size=64, output_size=10):
+        super(CNN_RNN_Model, self).__init__()
+        self.conv1 = nn.Conv2d(input_channels, conv_out_channels, kernel_size=3, stride=1, padding=1)
+        self.conv2 = nn.Conv2d(conv_out_channels, conv_out_channels, kernel_size=3, stride=1, padding=1)
+        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
         self._to_linear = None
-        self.convs (torch.randn (1, input_channels, 32, 32))
-
-        # RNN layers (LSTM or GRU)
-        self.rnn = nn.LSTM (input_size=self._to_linear, hidden_size=rnn_hidden_size, num_layers=num_layers,
-                            batch_first=True)
-
-        # Fully connected layer (after RNN)
-        self.fc = nn.Linear (rnn_hidden_size, output_size)
+        self.rnn_hidden_size = rnn_hidden_size
+        self.rnn = nn.LSTM(input_size=conv_out_channels * 16 * 16, hidden_size=rnn_hidden_size, batch_first=True)
+        self.fc = nn.Linear(rnn_hidden_size, output_size)
 
     def convs(self, x):
-        x = F.relu (self.conv1 (x))
-        x = self.pool (F.relu (self.conv2 (x)))
+        x = F.relu(self.conv1(x))
+        x = self.pool(F.relu(self.conv2(x)))
         if self._to_linear is None:
-            self._to_linear = x [0].numel ()
+            self._to_linear = x[0].numel()
         return x
 
     def forward(self, x):
-        # x: input tensor of shape (batch_size, sequence_len, channels, height, width)
+        # x: input tensor of shape (batch_size, seq_len, channels, height, width)
         batch_size, seq_len, _, _, _ = x.shape
 
         # CNN operations for each time step
         cnn_out = []
-        for t in range (seq_len):
+        for t in range(seq_len):
             # Extract each time step (image frame)
-            x_t = x [:, t, :, :, :]
-            x_t = self.convs (x_t)
-            x_t = x_t.view (batch_size, -1)  # Flatten the output for RNN
-            cnn_out.append (x_t)
+            x_t = x[:, t, :, :, :]
+            x_t = self.convs(x_t)
+            x_t = x_t.view(batch_size, -1)  # Flatten the output for RNN
+            cnn_out.append(x_t)
 
-        # Stack the CNN outputs into a tensor of shape (batch_size, sequence_len, features)
-        cnn_out = torch.stack (cnn_out, dim=1)
+        # Stack the CNN outputs into a tensor of shape (batch_size, seq_len, features)
+        cnn_out = torch.stack(cnn_out, dim=1)
 
         # RNN operations
-        rnn_out, _ = self.rnn (cnn_out)  # rnn_out shape: (batch_size, sequence_len, rnn_hidden_size)
+        rnn_out, _ = self.rnn(cnn_out)  # rnn_out shape: (batch_size, seq_len, rnn_hidden_size)
 
         # Taking the output from the last time step
-        out = self.fc (rnn_out [:, -1, :])  # Output layer
+        out = self.fc(rnn_out[:, -1, :])  # Output layer
         return out
 
 
