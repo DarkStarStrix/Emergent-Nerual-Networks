@@ -52,24 +52,17 @@ cd writerside
 topics: starter topic.md 
 
 # scripts how to run
-cd scripts
+model-CI-CD: 
+  - run.sh
+  - test.sh
+  - deploy.sh
+  - train.sh
 
-Emergent_Model.py
+# License specification
+This project is licensed under the MIT License.
+any non-commercial use is allowed.
+such as research, education, and personal use. And contributions are welcome.
 
-EMPE_Framework.py
-
-EMPE_Test.py
-
-ENN.py
-
-generate_configs.py
-
-prediction_engine.py
-
-synthetic_data.py
-
-# models 
-cd models  
-
-complex_nn_model.pkl
-
+For any commercial use of this project, please contact me at [allanw.mk@gmail.com].
+such as selling, distributing, or using this project for commercial purposes. or 
+for profit purposes. products or services.
