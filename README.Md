@@ -50,3 +50,26 @@ pip install -r requirements.txt
 cd writerside 
 
 topics: starter topic.md 
+
+# scripts how to run
+cd scripts
+
+Emergent_Model.py
+
+EMPE_Framework.py
+
+EMPE_Test.py
+
+ENN.py
+
+generate_configs.py
+
+prediction_engine.py
+
+synthetic_data.py
+
+# models 
+cd models  
+
+complex_nn_model.pkl
+
