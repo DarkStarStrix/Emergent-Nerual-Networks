@@ -19,7 +19,7 @@ class ComplexNN (nn.Module):
 
 
 # Load the pre-trained model
-model_path = 'models/complex_nn_model.pth'
+model_path = 'models/complex_nn_model.pkl'
 model = ComplexNN ()
 model.load_state_dict (torch.load (model_path))
 model.eval ()
